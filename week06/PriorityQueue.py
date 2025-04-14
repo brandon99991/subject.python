@@ -23,8 +23,17 @@ class PriorityQueue:
                 highest = i
         return highest
 
+    def findMinIndex(self):
+        if self.isEmpty(): return -1
+        lowest = 0
+        for i in range(1, self.size):
+            if self.array[i] < self.array[lowest]:  # 공백이 아니면 가장 큰 요소값이 높은 우선순위를 할당받음
+                lowest = i
+        return lowest
+
     def dequeue(self):
-        highest = self.findMaxIndex()         # 우선순위가 가장 높은 요소 삭제
+        #highest = self.findMaxIndex()         # 우선순위가 가장 높은 요소 삭제
+        highest = self.findMinIndex()         # 우선순위가 가장 높은 요소 삭제
         if highest != -1:
             self.size -= 1
             self.array[highest], self.array[self.size] = \
